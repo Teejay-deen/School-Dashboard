@@ -6,6 +6,6 @@ type Props = {}
 
 export default function page({}: Props) {
   return (
-    <div>settings page</div>
+    <div>setting page</div>
   )
 }
