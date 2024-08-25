@@ -3,7 +3,7 @@
 "use client";
 
 import Link from "next/link";
-import { LucideIcon } from "lucide-react";
+import { Ghost, LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { usePathname } from "next/navigation";
 
 interface NavProps {
   isCollapsed: boolean;
@@ -26,6 +27,8 @@ interface NavProps {
 }
 
 export function Nav({ links, isCollapsed }: NavProps) {
+
+    const pathName = usePathname()
   return (
     <TooltipProvider>
       <div
@@ -40,7 +43,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   <Link
                     href={link.href}
                     className={cn(
-                      buttonVariants({ variant: link.variant, size: "icon" }),
+                      buttonVariants({ variant: link.href === pathName ? "default" : "ghost", size: "icon" }),
                       "h-9 w-9",
                       link.variant === "default" &&
                         "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
@@ -67,7 +70,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 key={index}
                 href={link.href}
                 className={cn(
-                  buttonVariants({ variant: link.variant, size: "sm" }),
+                  buttonVariants({ variant: link.href === pathName ? "default" : "ghost", size: "sm" }),
                   link.variant === "default" &&
                     "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
                   "justify-start"
