@@ -176,7 +176,7 @@ const data: Payment[] = [
   // ... more data entries
 ];
 
-export default function Page() { // Capitalize the component name to adhere to convention
+export default function OrdersPage() { // Capitalize the component name to adhere to convention
   return (
     <div className="flex mb-4 flex-col gap-5 w-full px-10">
       <PageTitle title="Orders" />
