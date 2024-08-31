@@ -1,21 +1,13 @@
+
 "use client";
+
 import { DataTable } from "@/components/ui/DataTable";
 import PageTitle from "@/components/ui/PageTitle";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 
-type Props = {};
-
-export default function page({}: Props) {
-  return (
-    <div className="flex mb-4 flex-col gap-5 w-full px-10">
-      <PageTitle title="Orders" />
-      <DataTable columns={columns} data={data} />
-    </div>
-  );
-}
-
+// Define the Payment type
 type Payment = {
   order: string;
   status: string;
@@ -23,7 +15,8 @@ type Payment = {
   method: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+// Define the columns outside the component
+const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "order",
     header: "Orders",
@@ -69,7 +62,8 @@ export const columns: ColumnDef<Payment>[] = [
   },
 ];
 
-export const data: Payment[] = [
+// Define the data outside the component
+const data: Payment[] = [
   {
     order: "ORD001",
     status: "PROCESSING",
@@ -179,6 +173,30 @@ export const data: Payment[] = [
     lastOrder: "2024-05-04",
     method: "QuickBook",
   },
-
-  // ...
+  // ... more data entries
 ];
+
+export default function Page() { // Capitalize the component name to adhere to convention
+  return (
+    <div className="flex mb-4 flex-col gap-5 w-full px-10">
+      <PageTitle title="Orders" />
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
